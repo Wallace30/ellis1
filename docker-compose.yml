@@ -1,0 +1,23 @@
+services:
+  # Serviço da sua aplicação Python/FastAPI
+  app:
+    # Constrói a imagem a partir do Dockerfile no diretório atual (.)
+    # O Docker Compose irá usar o seu Dockerfile para criar a imagem.
+    build: .
+    container_name: api1
+
+    # Mapeia a porta 8000 do contêiner (exposta no seu Dockerfile)
+    # para a porta 8000 da sua máquina.
+    ports:
+      - "8000:8000"
+    # Monta o diretório atual dentro do contêiner no caminho /app.
+    # Isso é ótimo para desenvolvimento, pois as alterações no seu código
+    # local serão refletidas instantaneamente no contêiner, e o --reload
+    # do uvicorn (definido no seu Dockerfile) reiniciará o servidor.
+    volumes:
+      - .:/app
+    
+    
+
+
+
